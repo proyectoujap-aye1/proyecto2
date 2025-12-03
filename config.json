@@ -1,0 +1,15 @@
+{
+    "backup_dir": "backups",
+    "backup_automatico": true,
+    "formato_backup": "json",
+    "comandos_habilitados": {
+        "cd": true,
+        "mkdir": true,
+        "rmdir": true,
+        "type": true,
+        "dir": true,
+        "log": true,
+        "clear": true
+    },
+    "api_key_cohere": "RsR6jdXJrR6xkRHuUcxOO9MieuYnKVbUQDOh2San"
+}
