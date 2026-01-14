@@ -1,60 +1,135 @@
 {
-  "nombre": "",
-  "ruta": "/",
-  "fecha_creacion": "2024-01-01T00:00:00",
-  "archivos": [],
-  "subcarpetas": [
+  "unidades": [
     {
-      "nombre": "Documentos",
-      "ruta": "C:\\\\",
-      "fecha_creacion": "2024-01-01T00:00:00",
-      "archivos": [
-        {
-          "nombre": "Notas",
-          "contenido": "Notas importantes aquí",
-          "extension": "txt",
-          "fecha_creacion": "2024-01-01T00:00:00",
-          "fecha_modificacion": "2024-01-01T00:00:00"
-        },
-        {
-          "nombre": "Tareas",
-          "contenido": "Lista de tareas pendientes",
-          "extension": "txt",
-          "fecha_creacion": "2024-01-01T00:00:00",
-          "fecha_modificacion": "2024-01-01T00:00:00"
-        }
-      ],
-      "subcarpetas": [
-        {
-          "nombre": "Proyectos",
-          "ruta": "C:\\\\Documentos",
-          "fecha_creacion": "2024-01-01T00:00:00",
-          "archivos": [
-            {
-              "nombre": "Idea",
-              "contenido": "Ideas para el proyecto",
-              "extension": "txt",
-              "fecha_creacion": "2024-01-01T00:00:00",
-              "fecha_modificacion": "2024-01-01T00:00:00"
-            },
-            {
-              "nombre": "Plan",
-              "contenido": "Plan de desarrollo",
-              "extension": "txt",
-              "fecha_creacion": "2024-01-01T00:00:00",
-              "fecha_modificacion": "2024-01-01T00:00:00"
-            }
-          ],
-          "subcarpetas": []
-        },
-        {
-          "nombre": "Fotos",
-          "ruta": "C:\\\\Documentos",
-          "fecha_creacion": "2024-01-01T00:00:00",
-          "archivos": [],
-          "subcarpetas": []
-        }
-      ]
+      "nombre": "C:",
+      "directorio_actual": "C:/",
+      "estructura": {
+        "nombre": "C:",
+        "ruta": "C:",
+        "ruta_completa": "C:/",
+        "fecha_creacion": "2024-01-01T00:00:00",
+        "archivos": [],
+        "subcarpetas": [
+          {
+            "nombre": "Documentos",
+            "ruta": "C:/",
+            "ruta_completa": "C:/Documentos",
+            "fecha_creacion": "2024-01-01T00:00:00",
+            "archivos": [
+              {
+                "nombre": "Notas",
+                "contenido": "Notas importantes aquí",
+                "extension": "txt",
+                "tamanio_kb": 0.02,
+                "fecha_creacion": "2024-01-01T00:00:00",
+                "fecha_modificacion": "2024-01-01T00:00:00"
+              },
+              {
+                "nombre": "Tareas",
+                "contenido": "Lista de tareas pendientes",
+                "extension": "txt",
+                "tamanio_kb": 0.03,
+                "fecha_creacion": "2024-01-01T00:00:00",
+                "fecha_modificacion": "2024-01-01T00:00:00"
+              },
+              {
+                "nombre": "test1",
+                "contenido": "Archivo de prueba 1",
+                "extension": "txt",
+                "tamanio_kb": 0.02,
+                "fecha_creacion": "2024-01-01T00:00:00",
+                "fecha_modificacion": "2024-01-01T00:00:00"
+              },
+              {
+                "nombre": "notas_clase",
+                "contenido": "Notas de clase importantes",
+                "extension": "txt",
+                "tamanio_kb": 0.03,
+                "fecha_creacion": "2024-01-01T00:00:00",
+                "fecha_modificacion": "2024-01-01T00:00:00"
+              }
+            ],
+            "subcarpetas": [
+              {
+                "nombre": "Proyectos",
+                "ruta": "C:/Documentos",
+                "ruta_completa": "C:/Documentos/Proyectos",
+                "fecha_creacion": "2024-01-01T00:00:00",
+                "archivos": [
+                  {
+                    "nombre": "Idea",
+                    "contenido": "Ideas para el proyecto",
+                    "extension": "txt",
+                    "tamanio_kb": 0.02,
+                    "fecha_creacion": "2024-01-01T00:00:00",
+                    "fecha_modificacion": "2024-01-01T00:00:00"
+                  },
+                  {
+                    "nombre": "Plan",
+                    "contenido": "Plan de desarrollo",
+                    "extension": "txt",
+                    "tamanio_kb": 0.02,
+                    "fecha_creacion": "2024-01-01T00:00:00",
+                    "fecha_modificacion": "2024-01-01T00:00:00"
+                  }
+                ],
+                "subcarpetas": []
+              },
+              {
+                "nombre": "Fotos",
+                "ruta": "C:/Documentos",
+                "ruta_completa": "C:/Documentos/Fotos",
+                "fecha_creacion": "2024-01-01T00:00:00",
+                "archivos": [],
+                "subcarpetas": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "nombre": "D:",
+      "directorio_actual": "D:/",
+      "estructura": {
+        "nombre": "D:",
+        "ruta": "D:",
+        "ruta_completa": "D:/",
+        "fecha_creacion": "2024-01-01T00:00:00",
+        "archivos": [],
+        "subcarpetas": [
+          {
+            "nombre": "Backup",
+            "ruta": "D:/",
+            "ruta_completa": "D:/Backup",
+            "fecha_creacion": "2024-01-01T00:00:00",
+            "archivos": [
+              {
+                "nombre": "respaldo1",
+                "contenido": "Respaldo antiguo",
+                "extension": "txt",
+                "tamanio_kb": 0.02,
+                "fecha_creacion": "2024-01-01T00:00:00",
+                "fecha_modificacion": "2024-01-01T00:00:00"
+              }
+            ],
+            "subcarpetas": []
+          }
+        ]
+      }
+    },
+    {
+      "nombre": "F:",
+      "directorio_actual": "F:/",
+      "estructura": {
+        "nombre": "F:",
+        "ruta": "F:",
+        "ruta_completa": "F:/",
+        "fecha_creacion": "2024-01-01T00:00:00",
+        "archivos": [],
+        "subcarpetas": []
+      }
     }
-  ]
+  ],
+  "unidad_actual": "C:"
 }

@@ -3,9 +3,8 @@ Módulo de configuración del sistema
 """
 import json
 import os
+import shutil
 from datetime import datetime
-
-API_KEY = "HLzNt2nUV9UCHPp8IM30awSBIkbDi9WNuv88xLZQ"
 
 class Configuracion:
     """Maneja la configuración del sistema y backups"""
@@ -27,9 +26,13 @@ class Configuracion:
                 "type": True,
                 "dir": True,
                 "log": True,
-                "clear": True
+                "clear": True,
+                "index": True
             },
-            "api_key_cohere": API_KEY # "RsR6jdXJrR6xkRHuUcxOO9MieuYnKVbUQDOh2San"
+            "api_key_cohere": "RsR6jdXJrR6xkRHuUcxOO9MieuYnKVbUQDOh2San",
+            "unidades_por_defecto": ["C:", "D:", "F:"],
+            "grado_arbol_b": 3,
+            "indice_global_archivo": "indice_global.json"
         }
         
         try:
@@ -73,6 +76,14 @@ class Configuracion:
         try:
             with open(archivo_backup, 'w', encoding='utf-8') as f:
                 json.dump(datos, f, indent=4, ensure_ascii=False)
+            
+            # También guardar un backup del índice global si existe
+            if os.path.exists("indice_global.json"):
+                # Obtener timestamp para usar en el nombre del backup del índice
+                timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+                backup_indice = f"{self.config['backup_dir']}/indice_global_{timestamp}.json"
+                shutil.copy2("indice_global.json", backup_indice)
+                
             return archivo_backup
         except Exception as e:
             print(f"Error haciendo backup: {e}")
@@ -106,3 +117,11 @@ class Configuracion:
         """Actualiza la configuración"""
         self.config.update(nueva_config)
         self._guardar_configuracion(self.config)
+    
+    def obtener_unidades_por_defecto(self):
+        """Obtiene las unidades por defecto"""
+        return self.config.get('unidades_por_defecto', ["C:", "D:", "F:"])
+    
+    def obtener_grado_arbol_b(self):
+        """Obtiene el grado del árbol B"""
+        return self.config.get('grado_arbol_b', 3)
