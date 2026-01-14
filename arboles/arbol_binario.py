@@ -56,6 +56,46 @@ class ArbolBinarioBusqueda:
         
         return None
     
+    def eliminar(self, nombre):
+        """Elimina un archivo por nombre del árbol"""
+        nombre = nombre.lower()
+        self.raiz, eliminado = self._eliminar_rec(self.raiz, nombre)
+        return eliminado
+    
+    def _eliminar_rec(self, nodo, nombre):
+        """Eliminación recursiva en el árbol binario"""
+        if nodo is None:
+            return None, False
+        
+        if nombre < nodo.nombre:
+            nodo.izquierda, eliminado = self._eliminar_rec(nodo.izquierda, nombre)
+            return nodo, eliminado
+        elif nombre > nodo.nombre:
+            nodo.derecha, eliminado = self._eliminar_rec(nodo.derecha, nombre)
+            return nodo, eliminado
+        else:
+            # Nodo encontrado
+            if nodo.izquierda is None:
+                return nodo.derecha, True
+            elif nodo.derecha is None:
+                return nodo.izquierda, True
+            else:
+                # Nodo con dos hijos: obtener el sucesor inorden
+                sucesor = self._minimo(nodo.derecha)
+                nodo.nombre = sucesor.nombre
+                nodo.archivo = sucesor.archivo
+                nodo.tamanio_kb = sucesor.tamanio_kb
+                nodo.derecha, _ = self._eliminar_rec(nodo.derecha, sucesor.nombre)
+                return nodo, True
+    
+    def _minimo(self, nodo):
+        """Encuentra el nodo mínimo en un subárbol"""
+        actual = nodo
+        while actual.izquierda is not None:
+            actual = actual.izquierda
+        return actual
+
+    
     def buscar_parcial(self, texto):
         """Busca archivos que contengan texto en su nombre"""
         resultados = []

@@ -66,13 +66,18 @@ class SistemaConsola:
         print("Índice global: Reconstruyendo índice...")
         self.indice_global = IndiceGlobal()
         
-        # Obtener todos los archivos del sistema
-        todos_archivos = self.sistema_archivos.obtener_todos_archivos()
+        # Obtener todos los archivos con sus rutas
+        archivos_con_ruta = self.sistema_archivos.obtener_todos_archivos_con_ruta()
         
-        # Esto es simplificado - en realidad necesitaríamos las rutas completas
-        print(f"Índice global: {len(todos_archivos)} archivos para indexar")
+        # Insertar cada archivo en el índice global
+        for item in archivos_con_ruta:
+            archivo = item['archivo']
+            ruta = item['ruta']
+            self.indice_global.insertar_archivo(archivo, ruta)
         
-        # Guardar índice vacío por ahora
+        print(f"Índice global: {len(archivos_con_ruta)} archivos indexados")
+        
+        # Guardar índice
         self.indice_global.guardar_indice()
     
     def _crear_datos_por_defecto(self):
@@ -137,7 +142,7 @@ class SistemaConsola:
             )
             
             # Guardar índice global si se modificó
-            if comando_base in ['type', 'rmdir']:
+            if comando_base in ['type', 'rm', 'rmdir', 'rename', 'ren']:
                 self.indice_global.guardar_indice()
             
             return resultado
@@ -181,8 +186,10 @@ class SistemaConsola:
         print("Estructuras: Lista enlazada (unidades), Árbol N-ario (directorios),")
         print("             Árbol Binario (archivos), Árbol B (índice global)")
         print("=" * 70)
-        print("Comandos disponibles: cd, mkdir, rmdir, type, dir, log, clear log, index")
+        print("Comandos disponibles: cd, mkdir, rmdir, type, rm, rename, dir, log, clear, index")
         print("Argumentos especiales:")
+        print("  rm <archivo> - Eliminar archivo (actualiza índice global)")
+        print("  rename <actual> <nuevo> - Renombrar archivo (actualiza índice global)")
         print("  dir search <texto> - Buscar directorios (postorden)")
         print("  dir search -file <nombre> - Buscar archivos (preorden)")
         print("  dir search -file <nombre> -range <min-max> - Buscar con rango (inorden)")
@@ -211,7 +218,7 @@ class SistemaConsola:
                 
                 # Determinar si es comando directo o lenguaje natural
                 if any(entrada.lower().startswith(cmd) for cmd in 
-                      ['cd ', 'mkdir ', 'rmdir ', 'type ', 'dir', 'log', 'clear', 'index']):
+                      ['cd ', 'mkdir ', 'rmdir ', 'type ', 'rm ', 'rename ', 'ren ', 'dir', 'log', 'clear', 'index']):
                     # Es un comando directo
                     resultado = self.procesar_comando_directo(entrada)
                     print(resultado)

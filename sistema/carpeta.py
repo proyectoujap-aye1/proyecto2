@@ -12,12 +12,18 @@ class Carpeta:
         self.nombre = nombre
         self.ruta = ruta
         # Construir ruta completa correctamente
-        if ruta.endswith('/') or ruta.endswith('\\'):
-            self.ruta_completa = f"{ruta.rstrip('/\\')}/{nombre}".replace('\\', '/')
-        elif ruta:
-            self.ruta_completa = f"{ruta}/{nombre}".replace('\\', '/')
-        else:
+        # Normalizar la ruta (quitar barras finales y reemplazar backslash)
+        ruta_normalizada = ruta.replace('\\', '/').rstrip('/')
+        
+        if not ruta_normalizada:
+            # Si no hay ruta, solo usar el nombre
             self.ruta_completa = nombre
+        elif ruta_normalizada.endswith(':'):
+            # Es una raíz de unidad (ej: "D:")
+            self.ruta_completa = f"{ruta_normalizada}/{nombre}"
+        else:
+            # Ruta normal
+            self.ruta_completa = f"{ruta_normalizada}/{nombre}"
         self.arbol_archivos = ArbolBinarioBusqueda()
         self.nodo_arbol = NodoArbolNario(self)
         self.fecha_creacion = datetime.now()
@@ -46,23 +52,30 @@ class Carpeta:
         return self.arbol_archivos.buscar_por_rango_tamanio(min_kb, max_kb)
     
     def buscar_carpeta(self, nombre):
-        """Busca una subcarpeta por nombre"""
+        """Busca una subcarpeta por nombre (case-insensitive)"""
+        nombre_lower = nombre.lower()
         for hijo in self.nodo_arbol.hijos:
-            if hijo.dato.nombre == nombre:
+            if hijo.dato.nombre.lower() == nombre_lower:
                 return hijo.dato
         return None
     
     def eliminar_archivo(self, nombre):
-        """Elimina un archivo por nombre (simulación)"""
+        """Elimina un archivo por nombre (simulación - solo verifica existencia)"""
         archivo = self.buscar_archivo(nombre)
         if archivo:
             return True
         return False
     
+    def eliminar_archivo_completo(self, nombre):
+        """Elimina un archivo completamente del árbol binario"""
+        return self.arbol_archivos.eliminar(nombre)
+
+    
     def eliminar_carpeta(self, nombre):
-        """Elimina una subcarpeta por nombre"""
+        """Elimina una subcarpeta por nombre (case-insensitive)"""
+        nombre_lower = nombre.lower()
         for i, hijo in enumerate(self.nodo_arbol.hijos):
-            if hijo.dato.nombre == nombre:
+            if hijo.dato.nombre.lower() == nombre_lower:
                 del self.nodo_arbol.hijos[i]
                 return True
         return False

@@ -24,6 +24,8 @@ class Configuracion:
                 "mkdir": True,
                 "rmdir": True,
                 "type": True,
+                "rm": True,
+                "rename": True,
                 "dir": True,
                 "log": True,
                 "clear": True,

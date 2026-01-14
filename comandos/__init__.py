@@ -6,7 +6,7 @@ Implementa el patrón Command para todos los comandos disponibles
 from .base import Comando
 from .navegacion import ComandoCD
 from .carpetas import ComandoMKDIR, ComandoRMDIR
-from .archivos import ComandoTYPE
+from .archivos import ComandoTYPE, ComandoRM, ComandoRENAME
 from .listado import ComandoDIR
 from .historial import ComandoLOG, ComandoCLEAR
 from .busqueda import ComandoINDEX
@@ -22,6 +22,9 @@ class FabricaComandos:
             'mkdir': ComandoMKDIR,
             'rmdir': ComandoRMDIR,
             'type': ComandoTYPE,
+            'rm': ComandoRM,
+            'rename': ComandoRENAME,
+            'ren': ComandoRENAME,  # Alias para rename
             'dir': ComandoDIR,
             'log': ComandoLOG,
             'clear': ComandoCLEAR,
@@ -43,6 +46,8 @@ __all__ = [
     'ComandoMKDIR',
     'ComandoRMDIR',
     'ComandoTYPE',
+    'ComandoRM',
+    'ComandoRENAME',
     'ComandoDIR',
     'ComandoLOG',
     'ComandoCLEAR',

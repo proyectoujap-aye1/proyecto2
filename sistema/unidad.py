@@ -25,8 +25,9 @@ class UnidadAlmacenamiento:
         raiz.ruta = ""
         raiz.ruta_completa = f"{self.nombre}:/"
         
-        nodo_raiz = NodoArbolNario(raiz)
-        self.arbol_directorios.raiz = nodo_raiz
+        # Usar el mismo nodo_arbol de la carpeta como raíz del árbol de directorios
+        # Esto asegura que cuando se agregan subcarpetas, el árbol esté correctamente conectado
+        self.arbol_directorios.raiz = raiz.nodo_arbol
         self.directorio_actual = raiz
     
     def navegar_a_ruta(self, ruta):
@@ -217,9 +218,16 @@ class UnidadAlmacenamiento:
         unidad = cls(data['nombre'])
         
         if data['estructura']:
-            unidad.arbol_directorios.raiz.dato = Carpeta.from_dict(data['estructura'])
+            # Cargar la carpeta raíz desde el diccionario
+            carpeta_raiz = Carpeta.from_dict(data['estructura'])
+            # Usar el nodo_arbol de la carpeta cargada como raíz del árbol
+            # Esto asegura que las subcarpetas estén correctamente conectadas
+            unidad.arbol_directorios.raiz = carpeta_raiz.nodo_arbol
+            unidad.directorio_actual = carpeta_raiz
         
         if data['directorio_actual']:
-            unidad.directorio_actual = unidad._encontrar_carpeta_por_ruta(data['directorio_actual'])
+            carpeta_encontrada = unidad._encontrar_carpeta_por_ruta(data['directorio_actual'])
+            if carpeta_encontrada:
+                unidad.directorio_actual = carpeta_encontrada
         
         return unidad

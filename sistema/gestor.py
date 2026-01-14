@@ -114,6 +114,32 @@ class SistemaArchivos:
             actual = actual.siguiente
         return todos_archivos
     
+    def obtener_todos_archivos_con_ruta(self):
+        """Obtiene todos los archivos con sus rutas completas para indexar"""
+        archivos_con_ruta = []
+        actual = self.unidades.cabeza
+        while actual:
+            # Recorrer recursivamente todas las carpetas de la unidad
+            self._recolectar_archivos_recursivo(
+                actual.unidad.arbol_directorios.raiz.dato,
+                archivos_con_ruta
+            )
+            actual = actual.siguiente
+        return archivos_con_ruta
+    
+    def _recolectar_archivos_recursivo(self, carpeta, lista_archivos):
+        """Recorre recursivamente las carpetas y recolecta archivos con rutas"""
+        # Agregar archivos de esta carpeta
+        for archivo in carpeta.listar_archivos():
+            lista_archivos.append({
+                'archivo': archivo,
+                'ruta': carpeta.ruta_completa
+            })
+        
+        # Recorrer subcarpetas
+        for subcarpeta in carpeta.listar_subcarpetas():
+            self._recolectar_archivos_recursivo(subcarpeta, lista_archivos)
+    
     def actualizar_indice_global(self, indice):
         """Actualiza el índice global del sistema"""
         self.indice_global = indice

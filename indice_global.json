@@ -1,1 +1,118 @@
-{}
+{
+    "t": 3,
+    "hoja": false,
+    "claves": [
+        "C::/Documentos/notas_clase.txt"
+    ],
+    "valores": [
+        {
+            "nombre": "notas_clase",
+            "extension": "txt",
+            "ruta_completa": "C::/Documentos/notas_clase.txt",
+            "tamanio_kb": 0.025390625,
+            "fecha_creacion": "2026-01-14T13:28:36.195738",
+            "fecha_modificacion": "2026-01-14T13:28:36.195738",
+            "contenido_preview": "Notas de clase importantes"
+        }
+    ],
+    "hijos": [
+        {
+            "t": 3,
+            "hoja": true,
+            "claves": [
+                "C::/Documentos/Notas.txt",
+                "C::/Documentos/Proyectos/Idea.txt",
+                "C::/Documentos/Proyectos/Plan.txt",
+                "C::/Documentos/Tareas.txt"
+            ],
+            "valores": [
+                {
+                    "nombre": "Notas",
+                    "extension": "txt",
+                    "ruta_completa": "C::/Documentos/Notas.txt",
+                    "tamanio_kb": 0.0224609375,
+                    "fecha_creacion": "2026-01-14T13:28:36.195668",
+                    "fecha_modificacion": "2026-01-14T13:28:36.195669",
+                    "contenido_preview": "Notas importantes aquí"
+                },
+                {
+                    "nombre": "Idea",
+                    "extension": "txt",
+                    "ruta_completa": "C::/Documentos/Proyectos/Idea.txt",
+                    "tamanio_kb": 0.021484375,
+                    "fecha_creacion": "2026-01-14T13:28:36.195707",
+                    "fecha_modificacion": "2026-01-14T13:28:36.195708",
+                    "contenido_preview": "Ideas para el proyecto"
+                },
+                {
+                    "nombre": "Plan",
+                    "extension": "txt",
+                    "ruta_completa": "C::/Documentos/Proyectos/Plan.txt",
+                    "tamanio_kb": 0.017578125,
+                    "fecha_creacion": "2026-01-14T13:28:36.195714",
+                    "fecha_modificacion": "2026-01-14T13:28:36.195714",
+                    "contenido_preview": "Plan de desarrollo"
+                },
+                {
+                    "nombre": "Tareas",
+                    "extension": "txt",
+                    "ruta_completa": "C::/Documentos/Tareas.txt",
+                    "tamanio_kb": 0.025390625,
+                    "fecha_creacion": "2026-01-14T13:28:36.195696",
+                    "fecha_modificacion": "2026-01-14T13:28:36.195697",
+                    "contenido_preview": "Lista de tareas pendientes"
+                }
+            ],
+            "hijos": []
+        },
+        {
+            "t": 3,
+            "hoja": true,
+            "claves": [
+                "C::/Documentos/test1.txt",
+                "C::/Documentos/test2.txt",
+                "D::/Backup/respaldo1.txt",
+                "F::/hola/notas.txt"
+            ],
+            "valores": [
+                {
+                    "nombre": "test1",
+                    "extension": "txt",
+                    "ruta_completa": "C::/Documentos/test1.txt",
+                    "tamanio_kb": 0.0185546875,
+                    "fecha_creacion": "2026-01-14T13:28:36.195720",
+                    "fecha_modificacion": "2026-01-14T13:28:36.195720",
+                    "contenido_preview": "Archivo de prueba 1"
+                },
+                {
+                    "nombre": "test2",
+                    "extension": "txt",
+                    "ruta_completa": "C::/Documentos/test2.txt",
+                    "tamanio_kb": 0.0302734375,
+                    "fecha_creacion": "2026-01-14T13:28:36.195725",
+                    "fecha_modificacion": "2026-01-14T13:28:36.195726",
+                    "contenido_preview": "Archivo de prueba 2 más grande"
+                },
+                {
+                    "nombre": "respaldo1",
+                    "extension": "txt",
+                    "ruta_completa": "D::/Backup/respaldo1.txt",
+                    "tamanio_kb": 0.015625,
+                    "fecha_creacion": "2026-01-14T13:28:36.195758",
+                    "fecha_modificacion": "2026-01-14T13:28:36.195759",
+                    "contenido_preview": "Respaldo antiguo"
+                },
+                {
+                    "nombre": "notas",
+                    "extension": "txt",
+                    "ruta_completa": "F::/hola/notas.txt",
+                    "tamanio_kb": 0.0205078125,
+                    "fecha_creacion": "2026-01-14T13:45:51.415467",
+                    "fecha_modificacion": "2026-01-14T13:45:51.415472",
+                    "contenido_preview": "holamundochanchofelix"
+                }
+            ],
+            "hijos": []
+        }
+    ]
+}

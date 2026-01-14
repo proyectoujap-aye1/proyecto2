@@ -139,10 +139,15 @@ class ComandoRMDIR(Comando):
                        f"Para confirmar, ejecute: rmdir /s/q {nombre_carpeta}"
             
             # Proceder con la eliminación
+            # Primero eliminar todos los archivos del índice global recursivamente
+            if indice_global:
+                self._eliminar_archivos_indice(carpeta_a_eliminar, indice_global)
+            
             eliminado = unidad_actual.eliminar_carpeta(nombre_carpeta)
             
             if not eliminado:
                 return f"Error: No se pudo eliminar la carpeta '{nombre_carpeta}'"
+
             
             # Backup automático
             estructura = sistema.obtener_estructura_completa()
@@ -159,4 +164,15 @@ class ComandoRMDIR(Comando):
         except Exception as e:
             logger.registrar_error(f"rmdir {argumentos}", str(e))
             return f"Error eliminando carpeta: {e}"
+    
+    def _eliminar_archivos_indice(self, carpeta, indice_global):
+        """Elimina todos los archivos de una carpeta del índice global recursivamente"""
+        # Eliminar archivos de esta carpeta
+        for archivo in carpeta.listar_archivos():
+            ruta_archivo = f"{carpeta.ruta_completa}/{archivo.nombre}.{archivo.extension}"
+            indice_global.eliminar_archivo(ruta_archivo)
+        
+        # Recursivamente eliminar archivos de subcarpetas
+        for subcarpeta in carpeta.listar_subcarpetas():
+            self._eliminar_archivos_indice(subcarpeta, indice_global)
 

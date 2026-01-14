@@ -53,7 +53,18 @@ class ChatbotIA:
                       reiniciar log, quitar historial
            Ejemplos: clear log
         
-        8. INDEX SEARCH [opciones] - Buscar en índice global
+        8. RM [nombre] - Eliminar un archivo
+           Sinónimos: elimina archivo, borra archivo, quita archivo, remueve archivo,
+                      eliminar, borrar, quitar, destruir archivo, elimina el archivo,
+                      borra el archivo, suprímelo, deshazte del archivo
+           Ejemplos: rm notas.txt, rm documento
+        
+        9. RENAME [nombre_actual] [nombre_nuevo] - Renombrar un archivo
+           Sinónimos: renombra, cambia nombre, cámbiale el nombre, pon nombre,
+                      renombrar, cambiar nombre de, renombra el archivo
+           Ejemplos: rename viejo.txt nuevo.txt, rename documento reporte
+        
+        10. INDEX SEARCH [opciones] - Buscar en índice global
            Sinónimos: busca, encuentra, localiza, hallar, ubicar, rastrear, detectar,
                       dónde está, buscar archivo, encontrar archivo
            Opciones:
@@ -105,6 +116,21 @@ class ChatbotIA:
         - "Deshazte de la carpeta Backup" -> rmdir /s /q Backup
         - "Sácame la carpeta Temp" -> rmdir /s /q Temp
         
+        Eliminar archivo (RM):
+        - "Elimina el archivo notas.txt" -> rm notas.txt
+        - "Borra el archivo documento" -> rm documento
+        - "Quítame ese archivo" -> rm ese
+        - "Borra notas" -> rm notas
+        - "Elimina el archivo llamado test" -> rm test
+        - "Deshazte del archivo basura.txt" -> rm basura.txt
+        
+        Renombrar archivo (RENAME):
+        - "Renombra el archivo viejo.txt a nuevo.txt" -> rename viejo.txt nuevo.txt
+        - "Cambia el nombre de documento a reporte" -> rename documento reporte
+        - "Cámbiale el nombre al archivo notas y ponle apuntes" -> rename notas apuntes
+        - "Renombra test.txt como prueba.txt" -> rename test.txt prueba.txt
+        - "Pon nombre informe al archivo datos" -> rename datos informe
+        
         Crear archivo (TYPE):
         - "Crea un archivo notas con el texto hola mundo" -> type notas "hola mundo"
         - "Guarda en un archivo llamado lista lo siguiente: comprar pan" -> type lista "comprar pan"
@@ -134,11 +160,17 @@ class ChatbotIA:
         - "Borra el registro" -> clear log
         - "Vacía el log" -> clear log
         
-        Búsqueda global (INDEX):
+        Búsqueda global (INDEX) - USAR PARA BUSCAR ARCHIVOS EN TODO EL SISTEMA:
+        - "Busca archivos que tengan nota" -> index search nota
         - "Busca todos los archivos con la palabra nota" -> index search nota
+        - "Buscame archivos que tengan test" -> index search test
+        - "Encuentra archivos que contengan nota" -> index search nota
         - "Encuentra archivos entre 10 y 20 KB" -> index search -range 10-20
         - "Localiza archivos llamados test que pesen entre 5 y 15 KB" -> index search -file test -range 5-15
         - "Dónde está el archivo proyecto?" -> index search proyecto
+        - "Busca archivos nota" -> index search nota
+        - "Encuentra el archivo notas" -> index search notas
+        - "Hay algún archivo llamado test?" -> index search test
         
         No relacionado con sistema de archivos:
         - "Hola cómo estás?" -> NINGUNO
@@ -160,7 +192,7 @@ class ChatbotIA:
             comando = response.text.strip()
             
             # Validar que sea un comando válido
-            comandos_validos = ['cd', 'mkdir', 'rmdir', 'type', 'dir', 'log', 'clear log', 'index']
+            comandos_validos = ['cd', 'mkdir', 'rmdir', 'rm', 'rename', 'ren', 'type', 'dir', 'log', 'clear log', 'index']
             
             if comando.upper() == "NINGUNO":
                 return None
@@ -183,6 +215,9 @@ class ChatbotIA:
             'mkdir': f"Carpeta creada exitosamente: {resultado}",
             'rmdir': f"Carpeta eliminada exitosamente: {resultado}",
             'type': f"Archivo creado correctamente: {resultado}",
+            'rm': f"Archivo eliminado: {resultado}",
+            'rename': f"Archivo renombrado: {resultado}",
+            'ren': f"Archivo renombrado: {resultado}",
             'dir': f"Contenido listado: {resultado}",
             'log': "Historial mostrado",
             'clear log': "Historial limpiado",
