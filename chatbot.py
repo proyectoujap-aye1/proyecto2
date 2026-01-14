@@ -8,7 +8,6 @@ except Exception:
     cohere = None
     _HAS_COHERE = False
 
-
 class ChatbotIA:
     """Chatbot que interpreta lenguaje natural y genera comandos"""
     def __init__(self, api_key):

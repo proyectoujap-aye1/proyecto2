@@ -5,6 +5,8 @@ import json
 import os
 from datetime import datetime
 
+API_KEY = "HLzNt2nUV9UCHPp8IM30awSBIkbDi9WNuv88xLZQ"
+
 class Configuracion:
     """Maneja la configuración del sistema y backups"""
     def __init__(self, archivo_config="config.json"):
@@ -27,7 +29,7 @@ class Configuracion:
                 "log": True,
                 "clear": True
             },
-            "api_key_cohere": "RsR6jdXJrR6xkRHuUcxOO9MieuYnKVbUQDOh2San"
+            "api_key_cohere": API_KEY # "RsR6jdXJrR6xkRHuUcxOO9MieuYnKVbUQDOh2San"
         }
         
         try:
